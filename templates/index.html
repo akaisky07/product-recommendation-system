@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D8BFD8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #6a2c70;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+
+		ul {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block; /* To center the list within the center-container */
+            text-align: left; /* Left-align the text within each list item */
+        }
+
+        li {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Recommendations</h1>
+        <form method="POST">
+            <label for="input_string">Enter Product Description:</label>
+            <input type="text" id="input_string" name="input_string" required>
+            <br><br>
+            <button type="submit">Search</button>
+        </form>
+        <br>
+        {% if p_names %}
+        <h2>Top 10 Recommendations:</h2>
+        <ul>
+            {% for p_name in p_names %}
+            <li>{{ p_name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Enter Product Description to find a match.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
